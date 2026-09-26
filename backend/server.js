@@ -29,6 +29,10 @@ await mongoose.connect(process.env.MONGO_URI);
 
 console.log("MongoDB connected");
 
-app.listen(process.env.PORT, () => {
-    console.log(`Server running on http://localhost:${process.env.PORT}`);
-});
+if (process.env.NODE_ENV !== "production") {
+    app.listen(process.env.PORT, () => {
+        console.log(`Server running on http://localhost:${process.env.PORT}`);
+    });
+}
+
+export default app;
